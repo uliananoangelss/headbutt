@@ -1,0 +1,1575 @@
+<html lang="en" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">HEADBUTT</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17" vid="5"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" vid="6">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" vid="7">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;display=swap" rel="stylesheet" vid="8">
+    <style vid="9">
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-gray: #9a9a9a;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .font-heading {
+            font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .font-body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 400;
+        }
+
+        
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        
+        ::selection {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        
+        .text-outline {
+            -webkit-text-stroke: 1px white;
+            color: transparent;
+        }
+        
+        .grid-collapse {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        }
+
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: white;
+            transition: width 0.2s ease-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .image-grayscale {
+            transition: all 0.2s ease-out;
+        }
+        
+        .hover-trigger:hover .image-grayscale {
+        }
+
+        
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .aspect-square {
+            aspect-ratio: 1 / 1;
+        }
+
+        .event-thumb {
+            width: 100%;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .event-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: unset;
+            background: transparent;
+        }
+
+        .interview-kicker {
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #6b7280;
+        }
+
+        .qa-line {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 14px;
+            align-items: start;
+        }
+
+        .qa-speaker {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding-top: 0.1rem;
+        }
+
+        @media (max-width: 767px) {
+            .qa-line {
+                grid-template-columns: 32px 1fr;
+                gap: 10px;
+            }
+        }
+
+        .press-interview {
+            column-count: 4;
+            column-gap: 2.5rem;
+            column-fill: balance;
+        }
+
+        .press-interview-block {
+            break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            margin-bottom: 1.75rem;
+        }
+
+        .press-interview p {
+            margin-bottom: 0.9rem;
+        }
+
+        .press-interview .question {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .press-interview .answer {
+            font-weight: 400;
+            color: #d1d5db;
+        }
+
+        @media (max-width: 1279px) {
+            .press-interview {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .press-interview {
+                column-count: 1;
+            }
+        }
+
+        .art-body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .art-microtitle {
+            display: inline;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            font-size: 0.84em;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+
+        .caption-gap {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden w-full min-h-screen flex flex-col" vid="10">
+
+    
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 mix-blend-difference" vid="11">
+        <div class="flex flex-wrap gap-x-6 gap-y-2 items-baseline uppercase font-body" vid="12">
+            <button id="nav-events" onclick="router('events')" class="nav-link text-gray-300 hover:text-white transition-colors duration-150 font-body text-xs md:text-sm" vid="14">PLEASE DON'T COME</button>
+            <button onclick="router('videos')" class="nav-link text-gray-300 hover:text-white transition-colors duration-150 font-body text-xs md:text-sm" vid="15">THINK HEADBUTT</button>
+            <button onclick="router('artworks')" class="nav-link text-gray-300 hover:text-white transition-colors duration-150 font-body text-xs md:text-sm">ART WORKS</button>
+            <button onclick="router('press')" class="nav-link text-gray-300 hover:text-white transition-colors duration-150 font-body text-xs md:text-sm">PRESS</button>
+            <button onclick="router('collaborations')" class="nav-link text-gray-300 hover:text-white transition-colors duration-150 font-body text-xs md:text-sm" vid="15a">COLLABORATIONS</button>
+            <button onclick="router('home')" class="ml-auto nav-link text-white hover:text-white transition-colors duration-150 font-heading tracking-tight text-lg md:text-xl leading-none" vid="16">HEADBUTT</button>
+        </div>
+    </nav>
+
+    
+    <main id="app" class="flex-grow w-full" vid="17">
+        
+    </main>
+
+    
+    <footer class="w-full border-t border-gray-900 mt-auto bg-black" vid="18">
+        <div class="max-w-[1920px] mx-auto px-6 py-12 md:py-20 flex flex-col md:flex-row justify-between items-start md:items-end gap-12" vid="19">
+            <div class="w-full md:w-1/3" vid="20">
+                <label class="block text-xs uppercase tracking-widest text-gray-500 mb-4" vid="21">Newsletter</label>
+                <div class="relative" vid="22">
+                    <form id="newsletter-form" class="flex w-full border border-white/20 hover:border-white/50 transition-colors duration-200">
+                        <input id="newsletter-email" name="email" type="email" required placeholder="YOUR@EMAIL.COM" class="bg-transparent text-white uppercase text-sm px-4 py-3 w-full outline-none placeholder-gray-700">
+                        <button id="newsletter-submit" type="submit" class="bg-white text-black px-8 py-3 text-base md:text-lg font-heading uppercase tracking-tight hover:bg-gray-200 transition-colors flex items-center justify-center shrink-0 whitespace-nowrap">Submit</button>
+                    </form>
+                    <div id="newsletter-status" class="absolute left-0 -bottom-6 text-xs uppercase tracking-widest text-gray-500"></div>
+                </div>
+            </div>
+            
+            <div class="flex gap-8 text-xs uppercase tracking-widest text-gray-500">
+    <a href="https://instagram.com/headbutt_project" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="hover:text-white transition-colors">
+       STUPID APP 1
+    </a>
+
+    
+    <a href="https://www.tiktok.com/@headbutt_project"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="hover:text-white transition-colors">
+       STUPID APP 2
+    </a>
+
+<a href="mailto:headbutt.contact@gmail.com"
+       class="hover:text-white transition-colors">
+       Contact
+    </a>
+
+    <span class="text-gray-800">© 2026 HEADBUTT</span>
+</div>
+    </footer>
+
+    
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/95 z-[60] hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 md:p-12" onclick="closeModal()" vid="29">
+        <div id="modal-content" class="relative max-w-7xl w-full max-h-full overflow-auto" onclick="event.stopPropagation()" vid="30">
+            <button onclick="closeModal()" class="absolute -top-10 right-0 text-white hover:text-gray-400 text-sm uppercase tracking-widest" vid="31">Close [ESC]</button>
+            <div id="modal-inner" vid="32"></div>
+        </div>
+    </div>
+
+    <script vid="33">
+        
+        const state = {
+            view: 'home',
+            artists: Array.from({ length: 46 }, (_, i) => ({
+                id: i + 1,
+                name: i % 2 === 0 ? `ARTIST ${i+1}` : null,
+                img: `https://i.pravatar.cc/300?img=${i + 10}`
+            })),
+            press: [
+                { id: 6, title: 'Numéro, Paris Dark Night: HEADBUTT in conversation with Christelle Oyir', year: '2024', img: 'NUMERO.png' },
+                { id: 7, title: 'Numéro, HEADBUTT Interview, Paris Dark Night: HEADBUTT in conversation with Christelle Oyir', year: '2024', img: 'NUMERO_INTERVIEW.png' },
+                { id: 8, title: 'Technopol, Headbutt Project celebrates a year of multidisciplinary events at Station Gare des Mines', year: '2024', img: 'Technopol_interview.png' },
+                { id: 9, title: 'TSUGI, feature on HEADBUTT and the current state of Paris club culture.', year: '2024', img: 'TSUGI.png' },
+            ],
+            posters: [
+                { id: 1, title: 'BIZARRE · Headbutt', year: '2023', img: 'poster_1.png' },
+                { id: 2, title: 'LA STATION – GARE DES MINES X HEADBUTT', year: '2023', img: 'poster_3.png' },
+                { id: 3, title: 'LA STATION – GARE DES MINES X HEADBUTT', year: '2024', img: 'poster_5.png' },
+                { id: 4, title: 'FVTVR X HEADBUTT', year: '2025', img: 'poster_4.png' },
+                { id: 5, title: 'FVTVR X HEADBUTT', year: '2025', img: 'poster_2.png' },
+            
+            ],
+            events: [
+              { id: 1, title: 'LA STATION – GARE DES MINES X HEADBUTT', date: 'APR 22 2023', location: 'LA STATION – GARE DES MINES', desc: 'Une nuit underground à Paris : techno brute, trance hypnotique, et une énergie collective qui tient jusqu’au matin.', tags: ['Performance', 'Techno'], img: 'poster_6.png' },
+              { id: 6, title: 'LA STATION – GARE DES MINES X HEADBUTT', date: 'SEP 23 2023', location: 'LA STATION – GARE DES MINES', desc: 'Une vision subversive et ludique du dancefloor techno.', tags: ['Performance', 'Exclusive'], img: 'poster_9.jpg' },
+               { id: 2, title: 'LA STATION – GARE DES MINES X HEADBUTT', date: 'APR 13 2024', location: 'LA STATION – GARE DES MINES', desc: 'Techno percutante, trance envoûtante : une soirée où le son prend toute la place.', tags: ['Performance', 'Exclusive'], img: 'poster_5.png' },
+               { id: 3, title: 'BIZARRE · Headbutt', date: 'NOV 03 2024', location: 'Pavillon Villette', desc: 'La soirée techno très fraîche créée par la DJ très prometteuse Vanille.', tags: ['Techno', 'Live', 'Queer'], img: 'villette_poster.png' },
+                { id: 4, title: 'FVTVR X HEADBUTT', date: 'AUG 15 2025', location: 'FVTVR', desc: 'Un line-up électronique contemporain, une vibe inclusive, et une nuit qui se vit à fond, sans pause.', tags: ['Techno', 'Live'], img: 'poster_7.png' },
+                { id: 5, title: 'Headbutt Open Air', date: 'JUN 28 2025', location: 'La Cité Fertile', desc: 'Le collectif HEADBUTT investit la Cité Fertile pour la avant-première du prochain épisode de THINK HEADBUTT avec Broodoo Ramses.', tags: ['Live', 'Open Air'], img: 'poster_8.png' },
+            ],
+            videos: [
+    { id: 1, title: 'Broodoo Ramses live: African Art meets Electronic Tale with HEADBUTT Puppet.', channel: 'THINK HEADBUTT', year: '2025', youtubeId: '6_c5mTorXbc' },
+    { id: 2, title: 'Sydfalls live: Braiding Art and Electronic Music', channel: 'THINK HEADBUTT', year: '2025', youtubeId: '5GfRvmpvLDQ' },
+    { id: 4, title: 'SAINTE MARIE FILM - PARIS FVTVR', channel: 'THINK HEADBUTT', year: '2025', youtubeId: 'iWEzult0eTk' },
+    { id: 5, title: 'TEHOTU LIVE – Sound, Sight, and Echo | Akai MPK25', channel: 'THINK HEADBUTT', year: '2025', youtubeId: 'c7GMQGeMqYA' },
+    { id: 6, title: 'LE KAIJU LIVE | Raw Creation on Erica Synths LXR-02 and Roland TR6S.', channel: 'THINK HEADBUTT', year: '2025', youtubeId: '1h4RmvDEbdk' },
+    { id: 3, title: 'SINA XX – LIVE PART 3 | MOVING PAINTING', channel: 'THINK HEADBUTT', year: '2026', youtubeId: '_Gdys5TyTbI' },
+    { id: 7, title: 'SINA XX – LIVE PART 2 | Landing in Baghdad: A Dance Improvisation', channel: 'THINK HEADBUTT', year: '2025', youtubeId: 'XyVeLBNlA1g' },
+    { id: 8, title: 'SINA XX – LIVE PART 1 | Read the Room: Improvised Dialogue with Snake', channel: 'THINK HEADBUTT', year: '2024', youtubeId: 'GhBAluwRH-s' },
+]
+        };
+const router = (viewName) => {
+            const app = document.getElementById('app');
+            const links = document.querySelectorAll('.nav-link');
+            
+            
+            links.forEach(l => l.classList.remove('text-white', 'border-b', 'border-white'));
+            
+            
+            window.scrollTo(0, 0);
+
+            
+            switch(viewName) {
+                case 'home':
+                    renderHome(app);
+                    break;
+                case 'press':
+                    renderPress(app);
+                    break;
+                case 'artworks':
+                    renderArtWorks(app);
+                    break;
+                case 'events':
+                    renderEvents(app);
+                    break;
+                case 'videos':
+                    renderVideos(app);
+                    break;
+                
+                case 'collaborations':
+                    renderCollaborations(app);
+                    break;
+                case 'more':
+                    renderMore(app);
+                    break;
+
+                default:
+                    renderHome(app);
+            }
+        };
+
+        
+
+        const renderHome = (container) => {
+            container.innerHTML = `
+                <!-- Section 1: Hero -->
+                <section class="relative h-screen w-full overflow-hidden">
+                    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+                        <source src="VIDEO_HEADER.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 z-[5]"></div>
+                    <div class="absolute inset-0 z-10 flex items-center justify-center">
+                        <h1 class="text-[12vw] md:text-[15vw] leading-[0.75] font-heading text-white tracking-tight opacity-90 select-none">HEADBUTT</h1>
+                    </div>
+                </section>
+
+                <!-- Section 2: Statement -->
+<section class="bg-black py-16 px-6 sm:px-8 md:px-16">
+  <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row md:items-start gap-10 md:gap-16">
+
+    <h2 class="font-heading uppercase text-white text-[72px] sm:text-[92px] md:text-[130px] leading-[0.85] tracking-tight">
+      HEADBUTT
+    </h2>
+
+    <p class="font-heading uppercase text-white text-[18px] sm:text-[22px] md:text-[28px] leading-[1.1] tracking-tight">
+
+<span class="inline-block bg-white align-middle"
+      style="width:48px; height:18px; margin-right:0.15em;"></span>
+
+      IS A UNIQUE SPACE FOR ENCOUNTERS AND EXPRESSION THAT CELEBRATES TECHNO
+      CULTURE WHILE HIGHLIGHTING BLACK AND QUEER IDENTITIES.
+      AN EVENT WHERE MUSIC, PERFORMANCES, AND DANCE INTERSECT TO CREATE A NEW KIND OF EXPERIENCE.
+
+    </p>
+
+  </div>
+</section>
+
+
+                <!-- Section 3: Featured Artists -->
+<section class="bg-black py-20 px-6 md:px-12 border-b border-gray-900">
+  
+  <div class="max-w-[1920px] mx-auto relative">
+
+    <!-- fingerprint -->
+    <div class="absolute left-1/2 top-1/2 
+                -translate-x-1/2 -translate-y-1/2 
+                translate-x-8 
+                rotate-[20deg] 
+                scale-[1.2] 
+                pointer-events-none z-0">
+      <img src="fingerprint.png"
+           class="w-[120px] md:w-[160px] lg:w-[200px] opacity-60 object-contain">
+    </div>
+
+    <!-- decorative elements -->
+
+    <!-- vanille handwriting -->
+    <img src="vanille_handwritting.png"
+         class="hidden md:block absolute left-4 top-8 w-20 md:w-24 opacity-80 pointer-events-none">
+
+    <!-- 2 brains -->
+    <img src="2_brains.png"
+         class="hidden md:block absolute left-1/2 top-2 -translate-x-1/2 w-32 md:w-40 opacity-90 pointer-events-none">
+
+    <!-- big kick -->
+    <img src="big_kick.png"
+         class="hidden md:block absolute left-8 bottom-32 w-20 md:w-24 opacity-80 pointer-events-none">
+
+    <!-- kick 2 -->
+    <img src="kick_2.png"
+         class="hidden md:block absolute right-[740px] bottom-24 w-20 md:w-24 opacity-80 pointer-events-none">
+
+    <!-- deep and fun -->
+<img src="deep_and_fun.png"
+     class="hidden md:block absolute right-[440px] bottom-8 w-24 md:w-28 opacity-80 pointer-events-none">
+
+    <!-- marie handwriting -->
+    <img src="marie_handwritting.png"
+         class="hidden md:block absolute right-4 top-10 w-20 md:w-24 opacity-80 pointer-events-none">
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-24 relative z-10">
+      
+      <div class="flex flex-col items-center">
+        <div class="w-full max-w-sm mb-8 aspect-square overflow-hidden">
+          <img src="Vanille.png" class="w-full h-full object-contain transition-all duration-300">
+        </div>
+        <h2 class="text-7xl md:text-9xl font-heading text-center tracking-tight uppercase">
+          Vanille
+        </h2>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="w-full max-w-sm mb-8 aspect-square overflow-hidden">
+          <img src="Marie.png" class="w-full h-full object-contain transition-all duration-300">
+        </div>
+        <h2 class="text-7xl md:text-9xl font-heading text-center tracking-tight uppercase">
+          Marie
+        </h2>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+                <!-- Section 4: Casting Grid -->
+<section class="bg-black py-20 px-2 md:px-6 border-b border-gray-900">
+  <h3 class="text-3xl md:text-5xl font-heading uppercase mb-8 pl-4 tracking-tight leading-none">Headbutt Artists Casting</h3>
+
+  <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-[2px] bg-black">
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./27_clothng.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">27 clothng</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./aisi.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">aisi</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./amarou_martinez.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">amarou martinez</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./ambiance_etrange.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">ambiance etrange</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./behzad_le_perse.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">behzad le perse</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./beups.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">beups</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./birama_coulibaly.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">birama coulibaly</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./bjoley.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">bjoley</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./borgial.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">borgial</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./bostog.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">bostog</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./bouh.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">bouh</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./broodooramses.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">broodooramses</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./buddy_the_puppet.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">buddy the puppet</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./calamity.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">calamity</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./cannelle.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">cannelle</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./carla.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">carla</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./celeste.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">celeste</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./crystal_murray.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">crystal murray</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./echo_of_nothing.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">echo of nothing</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./fia.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">fia</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./hebi_snake.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">hebi snake</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./herton.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">herton</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./isaac_manguele.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">isaac manguele</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./jaddow.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">jaddow</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./jo_keita.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">jo keita</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./jonathan.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">jonathan</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./le_kaiju.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">le kaiju</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./mami_watta.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">mami watta</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./mcr_t.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">mcr t</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./najoa.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">najoa</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./noty6boy.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">noty6boy</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./sabria_b.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">sabria b</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./sacha_peyronnet.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">sacha peyronnet</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./salome.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">salome</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./sicion.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">sicion</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./sina_xx.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">sina xx</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./slimsoledad.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">slimsoledad</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./soraya.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">soraya</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./suerte.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">suerte</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./sydfalls.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">sydfalls</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./tehotu.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">tehotu</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./thjerza_balaj.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">thjerza balaj</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./tygapaw.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">tygapaw</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./ushka.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">ushka</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./vulva_vitamina.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">vulva vitamina</span>
+      </div>
+    </div>
+
+    <div class="group relative aspect-square overflow-hidden bg-gray-900 cursor-pointer focus:outline-none" tabindex="0">
+      <img src="./yazzus.png" class="w-full h-full object-cover opacity-100 transition-all duration-200">
+      <div class="absolute inset-0 border border-transparent group-hover:border-white group-focus:border-white transition-colors duration-200 pointer-events-none z-10"></div>
+      <div class="absolute bottom-0 left-0 w-full p-2 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200">
+        <span class="text-[10px] uppercase tracking-wider text-white truncate block font-body">yazzus</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+                <!-- Section 5: Manifesto -->
+                <section class="pt-32 pb-12 px-6 flex justify-center bg-black">
+                    <div class="max-w-4xl text-justify">
+                        <p class="text-2xl md:text-4xl font-heading uppercase leading-tight tracking-tight text-gray-200">
+                            We believe that nightlife remains one of the few spaces where people can connect with one another selflessly. The spaces dedicated to play gradually disappear as we grow up, even though they were once our only purpose as children. We should keep playing. Dance is an infinite game. We want grown-ups to come and play at our parties. We wish for the night to regain its vibrant energy.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 6: More -->
+                <section class="pb-8 md:pb-10 px-6 flex justify-center bg-black">
+                    <div class="max-w-4xl w-full flex justify-center">
+                </section>
+            `;
+        };
+
+        const renderPress = (container) => {
+            container.innerHTML = `
+                <div class="pt-32 px-6 md:px-12 pb-20 max-w-[1920px] mx-auto fade-in">
+                    <header class="mb-16 border-b border-gray-800 pb-8">
+                        <h1 class="text-6xl md:text-9xl font-heading uppercase leading-none mb-4 tracking-tight">Press</h1>
+                        <p class="text-gray-500 uppercase tracking-widest text-sm max-w-md font-body">Selected press features and full interview archive.</p>
+                    </header>
+
+                    <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8 mb-24">
+                        ${state.press.map(item => `
+                            <div class="break-inside-avoid relative group cursor-pointer" onclick="openModal('${item.img}', '${item.title}', '${item.year}')" tabindex="0">
+                                <div class="overflow-hidden relative">
+                                    <img src="${item.img}" class="w-full h-auto object-cover transition-all duration-300 ease-out group-hover:scale-[1.02]">
+                                    <div class="absolute inset-0 border border-transparent group-hover:border-white transition-colors duration-300 pointer-events-none z-20"></div>
+                                </div>
+                                <div class="mt-3 flex justify-between items-end opacity-50 group-hover:opacity-100 transition-opacity duration-300 gap-4">
+                                    <h3 class="text-sm uppercase tracking-wider font-body">${item.title}</h3>
+                                    <span class="text-xs text-gray-500 font-body shrink-0">${item.year}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <section class="border-t border-gray-900 pt-16">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                            <div class="lg:col-span-4">
+                                <p class="interview-kicker mb-6 font-body">Vanille and Marie in conversation with Christelle Oyir</p>
+                                <h2 class="text-5xl md:text-7xl font-heading uppercase leading-[0.92] tracking-tight text-white">HEADBUTT – Interview for Numéro</h2>
+                            </div>
+
+                            <div class="lg:col-span-8">
+<div class="press-interview font-body text-gray-300 text-[15px] md:text-base leading-relaxed text-justify text-justify">
+<div class="press-interview-block">
+<p class="question">1. What does it mean for you to “throw a headbutt” at the party?</p>
+<p class="question">Your name evokes collision, a frontal impact. What is the origin of the name? Is your way of partying a form of resistance? If so, resistance against what or whom?</p>
+<p class="answer">HEADBUTT is a way of thinking. Everyone should be HEADBUTT – everyone should be able to throw their own headbutt wherever they feel the need to express themselves. That frontal impact starts as an impulse, something you do without thinking, out of necessity. HEADBUTT is also a rhythm: you dance following the movement of your head.</p>
+<p class="answer">For us, it comes from the desire to see events that feel less sanitized, with more color – in every sense of the word. We started our parties because, honestly, we were bored. It was always the same profiles and the same visuals. We’re here to headbutt the world of electronic music. We wanted to create a space that felt less monochrome, and above all to bring together the different worlds that inspire us.</p>
+<p class="answer">The resistance in our approach lies in doing things the way we truly want to. It’s about refusing standardization, refusing the pressure to conform. Doing things with genuine intention is already a form of resistance.</p>
+<p class="answer">It also means resisting what has been imposed on us – creating a space where, as mixed-race young women, we had long been made to feel we didn’t belong. Organizing these parties is our way of inhabiting this scene on our own terms, even though we hadn’t been part of it for years beforehand. We arrived somewhat out of nowhere, without really knowing much about organizing or producing events.</p>
+<p class="answer">We also refuse to rely on vague terms like “minority” or “racialized.” That kind of marketing designed to soothe consciences irritates us deeply. We prefer to express ourselves through striking images, powerful messages that go straight to the point, and through the real values we carry in our hearts. In our view, that kind of communication has far more weight and impact than words that eventually become empty – used merely to tick boxes without truly reaching people.</p>
+<p class="answer">Resistance also means acknowledging the Black contributions to electronic music. Too often techno, house, funk, and disco are “whitened” in the collective imagination, even though they were born out of the struggles and innovations of the Black community.</p>
+<p class="answer">Techno – influenced by the electronic music of Kraftwerk – emerged in Detroit through pioneers such as Juan Atkins, Derrick May, and Kevin Saunderson, in response to the social realities of African-American communities. House music, carried by artists like Frankie Knuckles in Chicago, and disco, shaped by Black and queer icons such as Donna Summer and Sylvester, were spaces of freedom and self-expression.</p>
+<p class="answer">Saying “Techno is BLACK” means refusing this erasure, reclaiming that history, and demanding that the heirs of these movements find their rightful place in the music industry.</p>
+<p class="answer">Exactly – it’s about giving artists a voice by offering them a real space for expression. Leaving room for the spontaneity of bodies, putting dancers at the forefront rather than DJs.</p>
+<p class="answer">We’re not interested in constantly defining which category we belong to. We want the body to take center stage, and the music to be the only statement. Everything we do, we do with heart, and with the support of the people around us.</p>
+<p class="answer">HEADBUTT is the cross-pollination of our experiences, our visions, and everything we want to see in the electronic music scene.</p>
+</div>
+<div class="press-interview-block">
+<p class="question">2. What was your first real shock on a dancefloor?</p>
+<p class="question">A particular set? The moment that made you want to create your own spaces. What was missing? What did you want to see, feel, and experience?</p>
+<p class="answer">My first memories go back to the warehouses I discovered when I was living in London. Those moments were powerful – music became the only space that mattered, merging with the movements of dance. What brought us together was a shared love for a music we deeply valued.</p>
+<p class="answer">That’s what techno does: it has this ability to make gestures feel obvious and primitive. Repetitive rhythms open up a trance, and when the body dances and speaks, it always hits like a shock.</p>
+<p class="answer">What was always missing for me in the techno parties I attended was a crowd that looked like me. I always felt like the mixed-race girl among only a handful of non-white people in the room. I never understood why things were this way, considering that most of the rhythms originate from Black culture.</p>
+<p class="answer">When I met Vanille, for the first time I allowed myself to believe that we could create new spaces within the French electronic scene.</p>
+<p class="answer">Dance itself was also undervalued. Why shouldn’t this driving music be guided and energized by professional dancers? For us, that became one of the first necessities – the thing that pushed us to organize HEADBUTT.</p>
+<p class="answer">We wanted to place those performer-artists we admire on our line-ups, dancing at the same time as DJs like MCRT were playing. Our events had to become a spectacle.</p>
+<p class="answer">My first real shock in electronic music came from discovering free parties, underground raves, and illegal gatherings. What struck me was the total freedom: no dress code, no imposed entrance conditions, no constraints. Just the music at the center of everything.</p>
+<p class="answer">The raw energy of the sound – that heavy kick that hits you directly – for me, that completely embodies Headbutt. Headbutt is not about a specific musical style, it’s about intensity and impact.</p>
+<p class="answer">But there were things missing.</p>
+<p class="answer">First, representation: too few women, too few Black or queer people on the scene. It was difficult to identify with anyone.</p>
+<p class="answer">Second, musical eclecticism: at the time the parties felt very compartmentalized – minimal, tech house, house… There was little fusion between genres. Today that’s changing, and we see ourselves as children of this artistic cross-pollination.</p>
+<p class="answer">Finally, there was a lack of playfulness and fun. With Marie, we felt some parties were too dark, too static, everyone staying in their own corner. We wanted a space where people could have fun and experiment.</p>
+<p class="answer">Performance and visual art also felt underused. We wanted inspiring visuals that elevate the experience – not just psychedelic images meant to make people “trip.”</p>
+<p class="answer">We try to create a captivating experience where music, dance, and art respond to each other. On stage, dancers amplify the energy of the dancefloor, create connection, and carry the audience with them.</p>
+<p class="answer">In those altered states – created by music and atmosphere – perceptions shift and emotions intensify.</p>
+<p class="answer">I think the night is still one of the few places where people can connect with each other selflessly. Spaces dedicated to play gradually disappear as we grow older, even though play was once our only purpose as children.</p>
+<p class="answer">We should keep playing. Dance is an infinite game.</p>
+<p class="answer">I want grown adults to come and play at our parties. I would love for the night to regain its vibrant energy, without being associated with excessive consumption that makes you regret going out.</p>
+<p class="answer">Headbutt is that space where everything is experienced more intensely.</p>
+</div>
+<div class="press-interview-block">
+<p class="question">3. Who has the right to party in Paris today?</p>
+<p class="question">Between police repression, the gentrification of alternative venues, and overly marketed “safe” formats – where do you position yourselves within this changing landscape?</p>
+<p class="answer">There are many types of parties. My favorites are the ones I have with friends in a living room, with the music we choose ourselves.</p>
+<p class="answer">As for venues that host parties, the first barrier is cost. Not everyone can spend fifteen euros to go dancing and then take an Uber home whenever they want. A first separation already happens there.</p>
+<p class="answer">At the same time, partying has lost some of its essence because of the starification of DJs. Artist fees have reached extraordinary levels, pushing festivals and major events to spend hundreds of thousands of euros on a single headliner.</p>
+<p class="answer">As a result, ticket prices explode. Some festivals cost hundreds of euros, and after that people simply can’t afford to go out clubbing anymore.</p>
+<p class="answer">Today I feel that partying in Paris is becoming increasingly inaccessible, especially in the techno scene. It’s dominated by a white, wealthy elite, with a new crowd influenced by Berlin – adopting precise dress codes and standardized attitudes.</p>
+<p class="answer">There’s an unspoken rule: to be accepted in certain places, you have to match a specific image.</p>
+<p class="answer">Even worse, many people come without even knowing the music – simply because they saw viral videos on TikTok.</p>
+<p class="answer">That’s exactly what we want to push against with Headbutt.</p>
+<p class="answer">Instead of relying on a single bankable name, we prefer to highlight local talent and emerging international artists. The goal is to create accessible events where a community can gather and grow.</p>
+<p class="answer">Sometimes I feel like partying itself is under attack – as if people sense that it allows humans to reconnect with themselves.</p>
+<p class="answer">When I see new laws proposed to penalize the organization of raves, I genuinely wonder: what are they so afraid of?</p>
+<p class="answer">Why are these measures implemented so quickly, while there are so many other places that would actually require real resources to keep us safe?</p>
+<p class="answer">Personally, I sometimes feel less safe in certain taxis than at parties.</p>
+<p class="answer">We cannot change an entire system – whether it’s capitalist thinking or the way social issues are approached. We have never claimed to establish a framework that society itself cannot guarantee.</p>
+<p class="answer">All we can do as organizers is ensure that our teams remain aware and attentive during our events.</p>
+<p class="answer">A certain marketing of nightlife has clearly taken hold, whereas in our view education and awareness about risks should be the priority.</p>
+</div>
+<div class="press-interview-block">
+<p class="question">4. What remains subversive in the way we dance, gather, and sweat together?</p>
+<p class="answer">What is subversive is precisely this reappropriation of the body outside the usual frameworks of productivity and control.</p>
+<p class="answer">Dance – especially in a festive context – creates a space where the rules of society are temporarily suspended: hierarchy, individualism, communication filtered through screens.</p>
+<p class="answer">It goes against the dominant model that wants us isolated, absorbed by work and digital communication that makes us predictable and controllable.</p>
+<p class="answer">When we dance, we are not consuming a product – we are experiencing collective energy. Bodies return to a form of pure presence.</p>
+<p class="answer">When we dance and gather to sweat together, we express the full power carried by the body.</p>
+<p class="answer">Sensation and emotion are the languages we speak.</p>
+<p class="answer">Bodies do not know how to lie. They reveal an intimacy that has become increasingly rare to hear.</p>
+<p class="answer">We must keep expressing that together.</p>
+<p class="answer">The fact that partying is a space of equality and social mixing – where body language overtakes verbal language – makes it difficult for a system that wants to categorize everything.</p>
+<p class="answer">These moments disturb the system because they remind us that we can exist outside suffering or economic servitude.</p>
+</div>
+<div class="press-interview-block">
+<p class="question">5. Who are you without the party?</p>
+<p class="question">That’s a real question. Can you still define yourselves outside of it when it has become such a vital organ of your pulse?</p>
+<p class="answer">For me, partying occupies the same place as play. The party can be everywhere with me – it simply needs to find the forms in which it can activate itself. It’s about asking how to stimulate the mind, what kind of momentum can make us feel that what we do carries a vital pulse.</p>
+<p class="answer">Listening to and observing others with real attention is already a great celebration – something powerful that animates me.</p>
+<p class="answer">My creativity unfolds through various fields such as fashion, performance, and spatial design. I have always cultivated a collaborative approach to art, often creating alongside my brothers who share my love for innovation and teamwork.</p>
+<p class="answer">My artistic approach is also shaped by my admiration for theater. I dream of creating works structured around playful scenography – reminiscent of playgrounds – addressing universal themes such as the search for meaning and the dynamics of the body.</p>
+<p class="answer">Before stepping into this new playground that music offers, I worked much more in the world of fashion.</p>
+<p class="answer">Today much of our work revolves around the video format we began producing last year to continue telling our stories.</p>
+<p class="answer">We launched our YouTube channel and created a space where artists can express themselves freely under our artistic direction. Through the THINK HEADBUTT format, we want to encourage people to do things differently.</p>
+<p class="answer">Parties were our first form of expression, but there are still many worlds we want to explore.</p>
+<p class="answer">Beyond that, my life is devoted to giving space to my inner child and sharing peaceful moments with the people I love.</p>
+<p class="answer">Without the party, we are artists in search – creators and thinkers.</p>
+<p class="answer">As a DJ, my role in nightlife has sometimes been a source of questioning. I accompany moments of excess and loss of control, and at times I have felt a certain guilt about being at the center of that dynamic.</p>
+<p class="answer">But over time I understood that the party is also an essential space of liberation – a moment when music creates pure emotion, brings joy, and unites people in a unique collective energy.</p>
+<p class="answer">Paradoxically, outside my work I move further and further away from that world. I rarely go out anymore, and sometimes I find it difficult to listen to music simply for pleasure, because it already fills my daily professional life.</p>
+<p class="answer">Before becoming a DJ, I studied art and fashion and worked for several years for an electronic music streaming platform in London, where we worked extensively with artificial intelligence.</p>
+<p class="answer">That experience deepened my reflections on the importance of the human mind in creation – sensitivity and emotion.</p>
+<p class="answer">Ultimately, beyond the party, I remain an explorer – someone who thinks, plays with ideas, and tries to understand the world through art and music.</p>
+</div>
+<div class="press-interview-block">
+<p class="question">6. What do you do with violence in nightlife?</p>
+<p class="question">Not only the violence we experience, but also the violence we sometimes generate ourselves. How do you transform it? Accept it? Deconstruct it?</p>
+<p class="answer">From our very first party we chose the slogan “Please don’t come,” because we are fully aware of the violence that exists around us. It was a kind of anticipatory reaction – a way of saying that we didn’t want to become a meeting point for conflict without having to explain it too explicitly.</p>
+<p class="answer">Our slogan is brutal, but our parties remain playful.</p>
+<p class="answer">We live in a violent world, and within that violence there is, somewhere, the same power for empathy. Understanding that violence is the result of multiple factors might allow us to think differently about how we respond to it.</p>
+<p class="answer">I see violence as a restless spirit reacting to things that confine us.</p>
+<p class="answer">To deconstruct it, we need to observe what limits us. Perhaps that’s how we can transform it.</p>
+<p class="answer">Violence often comes from repressed or unresolved emotions. It also comes from a lack of education.</p>
+<p class="answer">What we try to do is redirect it through thought. That’s also why we created our YouTube video format THINK HEADBUTT, which in the long term aims to foster a more conscious society and encourage new ways of thinking.</p>
+</div>
+<div class="press-interview-block">
+<p class="question">7. What place do silence, boredom, and slowing down have in your festive practices?</p>
+<p class="answer">This question should be central in nightlife today. We think about it constantly, as if we hold in our hands a key space where everyday habits could shift.</p>
+<p class="answer">There is less and less space for boredom, yet we want to invite our audience to reconnect with that state of deceleration just as much as with the impulse of euphoria.</p>
+<p class="answer">We have never structured our line-ups around the usual crescendo where the closing DJ must deliver the most intense set. On the contrary, we want the audience to find a way to end the party – something that often becomes difficult once daylight arrives.</p>
+<p class="answer">This is something we haven’t yet implemented but will introduce soon: ending our events with ambient live performances and soothing music.</p>
+<p class="answer">The idea is to allow our community to come down collectively from the euphoria in a calm and peaceful way – marking a true end to the party.</p>
+<p class="answer">At HEADBUTT events you also hear a jingle between each set. It’s a way to create a break and allow each artist to take over the audience on their own terms, without having to follow the mood created before them.</p>
+<p class="answer">The dancers at our events also create moments of contemplation – pauses within the movement of the body. Introducing performances during the night is a concrete way to open space for silence.</p>
+<p class="answer">Personally I struggle with boredom and silence – I always need stimulation – so it’s also something I reflect on in my own life.</p>
+<p class="answer">Yesterday my therapist told me this quote: “Silence is a deep melody, for those who can hear it above the noise.”</p>
+</div>
+<div class="press-interview-block">
+<p class="question">8. If your party had a soundtrack, what would it be?</p>
+<p class="question">A few essential or unexpected tracks – the ones that express your language, your frequencies.</p>
+<p class="answer">Headbutt is more than a party – it’s a sonic universe we carefully shape. By also taking on the role of a label, we want to affirm a musical identity that is borderless, raw, and impactful.</p>
+<p class="answer">Cocktail – DJ Ali<br>Struggle – Robert Hood<br>Go Get Busy – DJ Sim<br>I’ve Been Waiting – MCRT<br>BXTR – Synthetica<br>Vanille – Goat Skin<br>Sicion – Abyssal<br>Tzusing – 日出東方 唯我不敗<br>Behzad et Bouh – Bebou-Éclosion<br>Muslimgauze – Every Grain Of Palestinian Sand</p>
+</div>
+<div class="press-interview-block">
+<p class="question">9. What would you like to pass on to emerging collectives today?</p>
+<p class="question">And what would you like people to forget – once and for all?</p>
+<p class="answer">What we want to pass on to future generations and emerging collectives is, above all, audacity.</p>
+<p class="answer">The courage to dare, to create your own space when none exists. If no one opens the door for you, then build it yourself.</p>
+<p class="answer">Create your own story. Tell people who you are. Don’t look sideways or try to respond to what others expect.</p>
+<p class="answer">If you feel the need to create something, there are certainly other people somewhere who need it too. Even if initiating a new world means speaking from your singularity.</p>
+<p class="answer">But beyond the act of creation, we also want to share a certain way of partying – a conscious way, grounded in emotion and reality.</p>
+<p class="answer">A new generation is arriving and will take over, but perhaps it does not yet have the tools to celebrate differently: without escape, without virtuality, without getting lost in the illusion of “always more.”</p>
+<p class="answer">Most importantly, we want them to understand that they don’t need to be everywhere, to be visible, or to go viral.</p>
+<p class="answer">The value of an experience cannot be measured in content.</p>
+<p class="answer">It is possible to exist differently, to carve your own path, and to refuse to follow tracks that have already been drawn.</p>
+<p class="answer">What matters most is transmitting your message. Don’t do things just for the sake of doing them.</p>
+<p class="answer">Personally, I wish we could forget phones at parties. They have nothing to do there.</p>
+<p class="answer">Bodies cannot connect when everyone is simultaneously trying to document the moment.</p>
+<p class="answer">Nothing can truly happen if everyone wants to act as the visual witness of the event.</p>
+<p class="answer">Machines carry forces we underestimate. We let them live our experiences for us, and we understand less and less what the mystery of experience really is.</p>
+<p class="answer">We stand against a certain ridiculous culture of virality that has settled into this scene.</p>
+<p class="answer">This culture of emptiness is spreading across many disciplines, and we want to eradicate it.</p>
+</div>
+<div class="press-interview-block">
+<p class="question">10. The Headbutt manifesto</p>
+<p class="question">It can also be a slogan (maximum five sentences).</p>
+<p class="answer">Our slogan already exists. It is both a banner and a filter.</p>
+<p class="answer">It embodies our vision, our desire for change, our search for unity.</p>
+<p class="answer">But it is also a natural repellent for those who do not share that desire, who do not recognize themselves in what we are building.</p>
+<p class="answer">There is no obligation to join, no compromise to make.</p>
+<p class="answer">If our message does not resonate with you, if you don’t feel that impulse, then…</p>
+<p class="answer">“PLEASE, DON’T (F***ING) COME.”</p>
+<p class="answer">“The door opens onto the void – there is already nothing left that once gave you balance.<br>Look behind you: it’s everything that keeps being swallowed, because it tastes like the past.<br>So take your momentum – who knows, maybe you have the power of the leap that gives wings to existence.<br>Learn to see what will never be told to you. Learn to visualize.<br>Become the existence that makes you want to exist.<br>Forget fullness – take your emptiness and build your unity.”</p>
+</div>
+</div></div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        };
+
+        
+        const renderArtWorks = (container) => {
+            const cniTexts = [
+                `<strong class="font-body font-bold text-white">Don't Touch My Hair. (2025)</strong> salt dough sculpture, chrome nail polish, printed on 250 gsm high-quality art gloss paper. Text manually incised with a craft scissor / <strong class="font-body font-bold text-white">Sainte Marie (2025)</strong>, artistic direction and photography.`,
+                `<strong class="font-body font-bold text-white">Goat Skin (2023)</strong> handmade custom wig, scanned crumpled 80 gsm uncoated white paper, artistic direction and photography / <strong class="font-body font-bold text-white">Bostog (2024)</strong> handmade composite portrait, papercut and weaving rescanned on 80 gsm uncoated white paper.`,
+                `<strong class="font-body font-bold text-white">Grâce. (2024)</strong> shot on film negative scanner, hairstyling with hair thread, artistic direction and photography / <strong class="font-body font-bold text-white">Vanille (2023)</strong> composite portrait, papercut and weaving rescanned on 80 gsm uncoated white paper.`,
+                `<strong class="font-body font-bold text-white">Marie (2024)</strong> composite portrait, papercut and weaving rescanned on 80 gsm uncoated white paper / <strong class="font-body font-bold text-white">Big Kick Energy (2023)</strong> hair art shaving on HEADBUTT's co-founder, artistic direction and photography.`,
+                `<strong class="font-body font-bold text-white">Le Saut d'Isaac (2024)</strong> shot on film negative scanner, hairstyling with hair thread and artistic direction / <strong class="font-body font-bold text-white">Vulva (2023)</strong> composite portrait, papercut and weaving rescanned on 80 gsm uncoated white paper.`,
+                `<strong class="font-body font-bold text-white">Can You Add A Goat ? (2023)</strong> handmade hairstyle, hair sculpture with wire / <strong class="font-body font-bold text-white">Hair Pochon (2023)</strong> with synthetic and natural hair shot and scanned on 80 gsm uncoated white paper.`
+            ];
+
+            container.innerHTML = `
+                <div class="pt-32 px-6 md:px-12 pb-20 max-w-[1920px] mx-auto fade-in">
+                    <header class="mb-20 border-b border-gray-800 pb-8">
+                        <h1 class="text-6xl md:text-9xl font-heading uppercase leading-none mb-8 tracking-tight">Art Works</h1>
+                        <p class="text-2xl md:text-4xl font-heading uppercase leading-tight tracking-tight text-gray-200 max-w-6xl">
+                            HEADBUTT’s visual identity is rooted in the confrontation between tradition and modernity. Each artwork questions the problematic use of artificial intelligence in art. Through club and music visuals, HEADBUTT reclaims its heritage to create new aesthetics that embody African culture.
+                        </p>
+                    </header>
+
+                    <section class="mt-24">
+                        <div class="flex flex-col gap-16">
+                            ${cniTexts.map((text, index) => `
+                                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                                    <div class="lg:col-span-7 grid grid-cols-2 gap-4 md:gap-6">
+                                        <figure class="flex items-center justify-center h-[240px] md:h-[320px] lg:h-[340px] overflow-hidden">
+                                            <img src="${index * 2 + 1}.webp"
+                                                 alt="Creating New Images ${index * 2 + 1}"
+                                                 class="max-w-full max-h-full w-auto h-auto object-contain block">
+                                        </figure>
+
+                                        <figure class="flex items-center justify-center h-[240px] md:h-[320px] lg:h-[340px] overflow-hidden">
+                                            <img src="${index * 2 + 2}.webp"
+                                                 alt="Creating New Images ${index * 2 + 2}"
+                                                 class="max-w-full max-h-full w-auto h-auto object-contain block">
+                                        </figure>
+                                    </div>
+
+                                    <div class="lg:col-span-5 w-full">
+                                        <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">
+                                            ${text}
+                                        </p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+
+                    <section class="mb-32 md:mb-40 pt-20 md:pt-28">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start">
+                            <div class="lg:col-span-6 flex items-start justify-center">
+                                <img src="vulva_copy.jpeg" alt="Vulva" class="w-full h-auto object-contain block max-h-[70vh]">
+                            </div>
+                            <div class="lg:col-span-6 w-full text-gray-300 text-[1.02rem] md:text-[1.18rem] leading-[1.3] text-justify font-body">
+                                <p>
+                                    <span class="float-left font-heading text-white text-[4.5rem] md:text-[6rem] leading-[0.8] mr-5 mb-2">VULVA</span>
+                                    This visual plays with the aesthetic codes of pixelated deconstruction and fragmentation, characteristic of imagery generated by artificial intelligence. At first glance, it appears to reflect an omnipresent technological trend, but in reality, each fragment has been meticulously assembled by hand, using our real faces, those of HEADBUTT and our artists. By blurring the boundaries between human and machine, we reclaim the power of the human hand, of craftsmanship, and of imperfection. Here, HEADBUTT becomes the ‘machine’ but a machine shaped by flesh, human contact, and authenticity. It is a celebration of what makes us unique, while ironically imitating what technology so often threatens to erase.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="mb-24 md:mb-32 border-t border-gray-900 pt-12 md:pt-16">
+                        <h2 class="text-5xl md:text-7xl font-heading uppercase leading-none tracking-tight mb-10 md:mb-12">Don't Touch My Hair</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-start">
+                            <div class="lg:col-span-6">
+                                <div class="grid grid-cols-2 gap-4 md:gap-6">
+                                    <img src="14.webp" alt="Don't Touch My Hair detail 1" class="w-full h-auto object-contain block">
+                                    <img src="15.webp" alt="Don't Touch My Hair detail 2" class="w-full h-auto object-contain block">
+                                </div>
+                                <p class="w-full mt-5 md:mt-6 text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">
+                                    <strong class="font-body font-bold text-white">Don't Touch My Hair. (2025)</strong> salt dough sculpture, chrome nail polish, printed on 250 gsm high-quality art gloss paper. Text manually incised with a craft scissor
+                                </p>
+                            </div>
+                            <div class="lg:col-span-6 flex justify-center lg:justify-end">
+                                <img src="13.webp" alt="Don't Touch My Hair" class="w-full h-screen object-cover block">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="mb-24 md:mb-32 border-t border-gray-900 pt-12 md:pt-16">
+                        <h2 class="text-5xl md:text-7xl font-heading uppercase leading-none tracking-tight mb-10 md:mb-12">Sainte Marie</h2>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center mb-14 md:mb-16">
+                            <div class="lg:col-span-4 flex justify-center">
+                                <img src="15.jpeg" alt="Sainte Marie visual 1" class="w-full h-[70vh] object-cover">
+                            </div>
+                            <div class="lg:col-span-3 flex justify-center">
+                                <img src="2.webp" alt="Sainte Marie visual 2" class="w-full h-[70vh] object-cover">
+                            </div>
+                            <div class="lg:col-span-5">
+                                <p class="w-full text-gray-300 text-[1.06rem] md:text-[1.22rem] leading-relaxed text-justify font-body">
+                                    <strong class="font-body font-bold text-white">Communication Visual Sainte Marie (2025)</strong> flyer, event August 15, 2025 (FVTVR)
+                                </p>
+                            </div>
+                        </div>
+
+                        <h3 class="font-heading text-3xl md:text-5xl uppercase tracking-tight leading-none mb-6 md:mb-8">Aftermovie, Sainte Marie, event August 15, 2025 (FVTVR)</h3>
+
+                        <div class="w-full flex justify-center mb-8 md:mb-10">
+                            <div class="w-full md:w-[88%] lg:w-[84%] aspect-video bg-black overflow-hidden">
+                                <video autoplay muted loop playsinline class="w-full h-full object-contain bg-black">
+                                    <source src="VIDEO_HEADER.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <div class="w-full mt-6">
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">The vision of the collective is rooted in storytelling, seeking to transform the nightlife world into an artistic space where celebration is not only lived but also narrated. Through their work, Headbutt aims to capture the fleeting essence of the night with a sense of melancholy and poetry, allowing the party to resonate as both memory and creation. This film, shot during their event at FVTVR, reflects that desire to preserve and reimagine the atmosphere of their gatherings, turning each moment into a piece of their artistic narrative.</p>
+                        </div>
+                    </section>
+
+                    <section class="mb-24 md:mb-32 border-t border-gray-900 pt-12 md:pt-16">
+                        <h2 class="text-4xl md:text-7xl font-heading uppercase leading-none tracking-tight mb-8 md:mb-10">Bodies Tell Stories</h2>
+                        <div class="w-full mb-8">
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">By highlighting the diversity of artistic mediums, THINK HEADBUTT aspires to reconnect the electronic scene with its original energy, far from current codes and trends and to reveal the unique musical legacy that each artist brings to this universe.</p>
+                        </div>
+                        <div class="w-full flex justify-center mb-12 md:mb-14">
+                            <div class="w-full md:w-[88%] lg:w-[84%] aspect-video bg-black overflow-hidden">
+                                <iframe class="w-full h-full"
+                                    src="https://www.youtube.com/embed/jOVp1PzTwAY?si=p0wLfMUWN1_Q0Lyw&rel=0"
+                                    title="Bodies Tell Stories"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="flex justify-center mt-14 md:mt-16">
+                            <a href="https://www.youtube.com/@Headbutt_Project" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center px-8 py-4 border uppercase font-heading tracking-tight text-xl md:text-2xl transition-colors duration-200 bg-black text-white border-white hover:bg-white hover:text-black hover:border-black focus:outline-none">
+                                Explore All Think Headbutt Episodes Here
+                            </a>
+                        </div>
+                    </section>
+
+                    <section class="mb-24 md:mb-32 border-t border-gray-900 pt-12 md:pt-16">
+                        <h2 class="text-4xl md:text-7xl font-heading uppercase leading-none tracking-tight mb-8 md:mb-10">Sydfalls: Braiding Art and Electronic Music</h2>
+                        <div class="w-full flex justify-center mb-12 md:mb-14">
+                            <div class="w-full md:w-[88%] lg:w-[84%] aspect-video bg-black overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/5GfRvmpvLDQ?si=ndmD6dM_ZUWSwnhW&rel=0" title="Sydfalls: Braiding Art and Electronic Music" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="w-full mb-10 space-y-5">
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">Braiding speaks to us of patience, of knowledge passed down through generations, of beauty transmitted sometimes through pain, sometimes through joy or necessity. We grew up learning to take this time for ourselves, away from the outside world, in an intimate ritual that instills the confidence to simply be. This moment is entrusted to those who offer their time, their hours, and their savoir-faire.</p>
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">For this first episode, HEADBUTT invited Ushka, a Parisian artist and hairstylist, to perform his art on Sydfalls, an artist, producer, and DJ from Chicago. It is a meeting of two worlds, weaving together music and braiding: both practices speak of patience, of duration, of transformation. The set becomes an artistic dialogue, where the sound evolves alongside the braid, each unfolding in resonance with the other.</p>
+                        </div>
+                        <figure class="w-full">
+                            <div class="flex items-center justify-center">
+                                <img src="SYDFALLS.webp" alt="Sydfalls live setup" class="max-w-full max-h-[52vh] w-auto h-auto object-contain block" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="hidden w-full min-h-[240px] md:min-h-[320px] items-center justify-center text-center">
+                                    <span class="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-body">Sydfalls placeholder</span>
+                                </div>
+                            </div>
+                            <figcaption class="w-full mt-6 text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">The live performance features: Roland TR-8S, Moogerfooger MF-108S Cluster Flux, AKAI Professional APC 40 Mk2 via Ableton, and the ZOIA effect pedal, performed live by Sydfalls, with Ushka on hair.</figcaption>
+                        </figure>
+                    </section>
+
+                    <section class="border-t border-gray-900 pt-12 md:pt-16">
+                        <h2 class="text-4xl md:text-7xl font-heading uppercase leading-none tracking-tight mb-8 md:mb-10">Broodoo Ramsès : African Art meets Electronic Tale with HEADBUTT Puppet</h2>
+                        <div class="w-full flex justify-center mb-12 md:mb-14">
+                            <div class="w-full md:w-[88%] lg:w-[84%] aspect-video bg-black overflow-hidden">
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/6_c5mTorXbc?si=FPWggcwENPCsPI4U&rel=0" title="Broodoo Ramsès" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10">
+                            ${['BROODOO1.webp', 'BROODOO2.webp'].map((src, index) => `
+                                <div class="flex items-center justify-center h-[240px] md:h-[320px] lg:h-[340px] overflow-hidden">
+                                    <img src="${src}" alt="Broodoo top ${index + 1}" class="max-w-full max-h-full w-auto h-auto object-contain block" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="hidden w-full min-h-[240px] md:min-h-[320px] items-center justify-center text-center">
+                                        <span class="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-body">Broodoo top placeholder ${index + 1}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="w-full space-y-5 mb-10 text-justify">
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">Broodoo Ramses to present his very first live set, shaped around movement, tradition and machines. Known for his magnetic energy and raw physicality, Broodoo builds sound through the body, dancing, triggering and responding in real time.</p>
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">At his side, the son of Yaya Coulibaly, founder of the Bamako-based Compagnie Sogolon, gives life to a handcrafted puppet. Multidisciplinary artist Calamity Ami created a custom HEADBUTT puppet for this episode in the likeness of Broodoo Ramses.</p>
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">Animated throughout the set, the puppets become both witnesses and extensions, translating emotion, rhythm and intention through pure movement. They act as silent storytellers that echo the presence and power of ancestral art, where electronic music meets African heritage.</p>
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">Broodoo performs surrounded by wires, synths and control surfaces, yet he remains the one pulling the strings. Like a modern puppeteer, he reclaims control over the very tools that often dictate the pace. Here, the body takes the lead and the machine follows.</p>
+                            <p class="w-full text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">This episode questions the role of the performer in a digitized world. It explores the space where human instinct meets coded logic, and where tradition does not merely survive but evolves. A ritual of sound and gesture, where control becomes creation.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8">
+                            ${['16.webp', '17.webp', '18.webp'].map((src, index) => `
+                                <div class="flex items-center justify-center h-[220px] md:h-[260px] lg:h-[280px] overflow-hidden">
+                                    <img src="${src}" alt="Broodoo grid ${index + 1}" class="max-w-full max-h-full w-auto h-auto object-contain block" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="hidden w-full min-h-[200px] md:min-h-[240px] items-center justify-center text-center">
+                                        <span class="text-[10px] uppercase tracking-[0.3em] text-gray-500 font-body">Broodoo grid placeholder ${index + 1}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <figure>
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-stretch">
+                                <div class="lg:col-span-7 flex items-center justify-center h-[260px] md:h-[360px] lg:h-[420px] overflow-hidden">
+                                    <img src="19.webp" alt="Broodoo bottom 1" class="max-w-full max-h-full w-auto h-auto object-contain block">
+                                </div>
+                                <div class="lg:col-span-5 grid grid-cols-1 gap-6 md:gap-8">
+                                    <div class="flex items-center justify-center h-[180px] md:h-[170px] lg:h-[196px] overflow-hidden">
+                                        <img src="20.webp" alt="Broodoo bottom 2" class="max-w-full max-h-full w-auto h-auto object-contain block">
+                                    </div>
+                                    <div class="flex items-center justify-center h-[180px] md:h-[170px] lg:h-[196px] overflow-hidden">
+                                        <img src="21.webp" alt="Broodoo bottom 3" class="max-w-full max-h-full w-auto h-auto object-contain block">
+                                    </div>
+                                </div>
+                            </div>
+                            <figcaption class="w-full mt-6 text-gray-300 text-base md:text-[1.2rem] leading-relaxed text-justify font-body">HEADBUTT imagined the “Butty” puppet, inspired by the identity of the artist Broodoorames, and brought to life by Calamity.</figcaption>
+                        </figure>
+                    </section>
+                </div>
+            `;
+        };
+
+
+        const renderEvents = (container) => {
+            container.innerHTML = `
+                <div class="pt-32 px-6 md:px-12 pb-20 max-w-[1920px] mx-auto fade-in">
+                    <header class="mb-20 border-b border-gray-800 pb-8">
+                        <h1 class="text-5xl md:text-8xl font-heading uppercase leading-none mb-4 tracking-tight">Please Don't Come</h1>
+                        <p class="text-gray-500 uppercase tracking-widest text-sm font-body">Past Events • Archive 4 sold-out editions • Over 700 attendees per event</p>
+                    </header>
+
+                    <div class="flex flex-col gap-0">
+                        ${state.events.map(event => `
+                            <div class="group w-full text-left border-b border-transparent py-12">
+                                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                                    <div class="lg:col-span-4">
+                                        <h2 class="text-3xl md:text-5xl font-heading uppercase leading-none mb-2 text-white group-hover:text-white transition-colors tracking-tight">${event.title}</h2>
+                                        <div class="flex flex-col gap-1 text-sm text-gray-400 mt-4 uppercase font-body">
+                                            <span>${event.date}</span>
+                                            <span>${event.location}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="lg:col-span-4">
+                                        <p class="text-gray-300 text-sm md:text-base leading-relaxed uppercase tracking-normal max-w-md font-body">${event.desc}</p>
+                                        <div class="flex flex-wrap gap-2 mt-4">
+                                            ${event.tags.map(tag => `<span class="px-2 py-1 border border-gray-700 text-[10px] uppercase tracking-widest text-gray-400 group-hover:border-gray-500 group-hover:text-gray-200 transition-colors font-body">${tag}</span>`).join('')}
+                                        </div>
+                                    </div>
+
+                                    <div class="lg:col-span-4">
+                                        <div class="event-thumb w-full relative border border-white/10 border-white/10">
+                                            <img src="${event.img}" class="transition-transform duration-500 transform" alt="${event.title.replaceAll('"', '&quot;')}">
+                                            <div class="absolute inset-0 border border-white/0 pointer-events-none"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        };
+
+        const renderVideos = (container) => {
+            container.innerHTML = `
+                <div class="pt-32 px-6 md:px-12 pb-20 max-w-[1920px] mx-auto fade-in">
+                    <header class="mb-16 border-b border-gray-800 pb-8 flex flex-col md:flex-row justify-between items-end gap-8">
+                        <div>
+                            <h1 class="text-5xl md:text-8xl font-heading uppercase leading-none mb-4 tracking-tight">Think Headbutt</h1>
+                            <p class="text-gray-500 uppercase tracking-widest text-sm font-body">THINK HEADBUTT is a video platform showcasing live electronic music performances, recorded at Poush studio. This initiative is dedicated to discovering and highlighting electronic music artists in a raw and authentic form.</p>
+                        </div>
+                        <div class="flex gap-4 text-xs uppercase tracking-wider text-gray-500 font-body">
+                        </div>
+                    </header>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${state.videos.map(video => `
+                            <div class="group cursor-pointer" onclick="openVideoModal('${video.youtubeId}', '${video.title.replaceAll("'", "\'")}')">
+                                <div class="relative aspect-video bg-gray-900 overflow-hidden mb-4 border border-transparent group-hover:border-white transition-colors duration-300">
+                                    <img src="https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" loading="lazy" alt="${video.title.replaceAll('"', '&quot;')}">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <div class="w-16 h-16 rounded-full border border-white flex items-center justify-center bg-black/50 backdrop-blur-sm group-hover:bg-white group-hover:text-black transition-all duration-300 transform group-hover:scale-110">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-1">
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="text-lg font-heading uppercase tracking-tight group-hover:text-white text-gray-200 transition-colors">${video.title}</h3>
+                                <div class="flex justify-between text-xs text-gray-500 mt-1 uppercase font-body">
+                                    <span>${video.channel}</span>
+                                    <span>${video.year}</span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        };
+
+        
+
+        
+        
+        const renderCollaborations = (container) => {
+            const collaborations = [
+                'pouch.png',
+                'nike.png',
+                'kway.png',
+                'airafrique.png',
+                'station_station.png',
+                'dif.png',
+                'fvtvr.png',
+                'la_cite_fertile.png'
+            ];
+
+            container.innerHTML = `
+                <div class="pt-32 px-6 md:px-12 pb-24 md:pb-32 max-w-[1920px] mx-auto fade-in">
+                    <header class="mb-14 md:mb-20 border-b border-gray-800 pb-8">
+                        <h1 class="text-5xl md:text-8xl font-heading uppercase leading-none mb-4 tracking-tight">They Trusted Us</h1>
+                        <div class="max-w-4xl text-justify">
+                            <p class="text-2xl md:text-4xl font-heading uppercase leading-tight tracking-tight text-gray-200">
+                                HEADBUTT partners with artists, collectives, venues, and brands to build nights that feel alive – from commissioning performances to shaping full event identities. If you have an idea, we can carry it with you.
+                            </p>
+                        </div>
+                    </header>
+
+                    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 items-center">
+                        ${collaborations.map((src) => `
+                            <div class="flex items-center justify-center min-h-[100px] md:min-h-[140px]">
+                                <img src="${src}" alt="${src.replace('.png','')}" class="max-h-16 md:max-h-20 lg:max-h-24 w-auto object-contain">
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="mt-16 md:mt-24 pt-6 md:pt-10 pb-10 md:pb-14 flex justify-center items-start">
+                        <a href="mailto:headbutt.contact@gmail.com" class="inline-flex justify-center items-center px-10 py-4 border uppercase font-heading tracking-tight text-2xl md:text-3xl transition-colors duration-200 bg-black text-white border-white hover:bg-white hover:text-black hover:border-black focus:outline-none">
+                            propose a collaboration
+                        </a>
+                    </div>
+                </div>
+            `;
+        };
+
+        const renderMore = (container) => {
+            container.innerHTML = `
+                <div class="pt-32 px-6 md:px-12 pb-24 md:pb-32 max-w-[1920px] mx-auto fade-in">
+                    <header class="mb-14 md:mb-20 border-b border-gray-800 pb-8">
+                        <h1 class="text-5xl md:text-8xl font-heading uppercase leading-none mb-4 tracking-tight">More</h1>
+                        <p class="text-gray-500 uppercase tracking-widest text-sm font-body max-w-xl">
+                            a short briefing page about headbutt – placeholders for now.
+                        </p>
+                    </header>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <section class="lg:col-span-7">
+                            <h2 class="text-2xl md:text-3xl font-heading uppercase tracking-tight mb-4">Who we are</h2>
+                            <p class="text-gray-300 text-sm md:text-base leading-relaxed font-body max-w-2xl">
+                                HEADBUTT is a platform for nights, performances, and moving images. We design encounters where electronic music, bodies, and visual language meet with intention. This space is built to amplify Black and queer presence – and to protect play as a serious practice.
+                            </p>
+
+                            <div class="mt-10 border-t border-gray-900 pt-10">
+                                <h2 class="text-2xl md:text-3xl font-heading uppercase tracking-tight mb-4">What we do</h2>
+                                <ul class="space-y-3 text-gray-300 text-sm md:text-base font-body">
+                                    <li class="flex gap-3"><span class="text-gray-500 uppercase tracking-widest text-xs mt-1">01</span><span>curation & line-ups (club nights, hybrid formats, showcases)</span></li>
+                                    <li class="flex gap-3"><span class="text-gray-500 uppercase tracking-widest text-xs mt-1">02</span><span>creative direction (identity, posters, motion, stage mood)</span></li>
+                                    <li class="flex gap-3"><span class="text-gray-500 uppercase tracking-widest text-xs mt-1">03</span><span>performances & commissions (live, experimental, interdisciplinary)</span></li>
+                                    <li class="flex gap-3"><span class="text-gray-500 uppercase tracking-widest text-xs mt-1">04</span><span>video sessions (THINK HEADBUTT, documentation, editorials)</span></li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <aside class="lg:col-span-5">
+                            <div class="border border-white/10 p-6 md:p-10 bg-white/5">
+                                <h3 class="text-xl md:text-2xl font-heading uppercase tracking-tight mb-3">Contact</h3>
+                                <p class="text-gray-300 text-sm md:text-base font-body leading-relaxed">
+                                    For bookings, collaborations, press, or venue partnerships:
+                                </p>
+                                <div class="mt-6 flex flex-col gap-2">
+                                    <a class="nav-link text-gray-200 hover:text-white transition-colors uppercase tracking-widest text-xs md:text-sm font-body" href="mailto:headbutt.contact@gmail.com">headbutt.contact@gmail.com</a>
+                                    <a class="nav-link text-gray-400 hover:text-white transition-colors uppercase tracking-widest text-xs md:text-sm font-body" href="https://instagram.com/headbutt_project" target="_blank" rel="noopener noreferrer">STUPID APP 1</a>
+                                    <a class="nav-link text-gray-400 hover:text-white transition-colors uppercase tracking-widest text-xs md:text-sm font-body" href="https://www.tiktok.com/@headbutt_project" target="_blank" rel="noopener noreferrer">STUPID APP 2</a>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 border border-gray-900 p-6 md:p-10">
+                                <h3 class="text-xl md:text-2xl font-heading uppercase tracking-tight mb-3">Next</h3>
+                                <p class="text-gray-400 text-sm md:text-base font-body leading-relaxed">
+                                    Add your real story here: mission, team, press kit, and a few images. Keep it minimal – like a backstage note.
+                                </p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            `;
+        };
+
+const openModal = (imgSrc, title, year) => {
+            const backdrop = document.getElementById('modal-backdrop');
+            const inner = document.getElementById('modal-inner');
+            
+            inner.innerHTML = `
+                <div class="flex flex-col items-center">
+                    <img src="${imgSrc}" class="max-w-full max-h-[80vh] object-contain shadow-2xl border border-gray-800">
+                    <div class="mt-6 text-center">
+                        <h2 class="text-3xl font-heading uppercase text-white tracking-tight">${title}</h2>
+                        <p class="text-gray-500 text-sm mt-2 font-body">${year} • ARCHIVE ID #${Math.floor(Math.random() * 10000)}</p>
+                    </div>
+                </div>
+            `;
+            
+            backdrop.classList.remove('hidden');
+            
+            void backdrop.offsetWidth;
+            backdrop.classList.remove('opacity-0');
+            document.body.style.overflow = 'hidden';
+
+            document.addEventListener('keydown', handleEsc);
+        };
+
+        const openVideoModal = (youtubeId, title = '') => {
+             const backdrop = document.getElementById('modal-backdrop');
+            const inner = document.getElementById('modal-inner');
+
+            inner.innerHTML = `
+                <div class="w-full max-w-6xl mx-auto">
+                    <div class="w-full aspect-video bg-black border border-gray-800 shadow-2xl relative overflow-hidden">
+                        <iframe
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0"
+                            frameborder="0"
+                            allow="autoplay; encrypted-media"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    ${title ? `
+                    <div class="mt-6 text-center">
+                        <h2 class="text-2xl md:text-3xl font-heading uppercase text-white tracking-tight">${title}</h2>
+                    </div>` : ``}
+                </div>
+            `;
+
+            backdrop.classList.remove('hidden');
+            void backdrop.offsetWidth;
+            backdrop.classList.remove('opacity-0');
+            document.body.style.overflow = 'hidden';
+            document.addEventListener('keydown', handleEsc);
+        };
+
+        const closeModal = () => {
+            const backdrop = document.getElementById('modal-backdrop');
+            backdrop.classList.add('opacity-0');
+            setTimeout(() => {
+                backdrop.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+            document.removeEventListener('keydown', handleEsc);
+        };
+
+        const handleEsc = (e) => {
+            if (e.key === 'Escape') closeModal();
+        };
+document.addEventListener('DOMContentLoaded', () => {
+            router('home');
+        });
+
+
+    </script>
+
+
+<script>
+  (function() {
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyhMJOO-NImgie4LfcqiplsDMq7ibFKp1IuHlOt6q_7h21J63pN2bqgOKk9iTjBvg_GmQ/exec';
+
+    const form = document.getElementById('newsletter-form');
+    if (!form) return;
+
+    const input = document.getElementById('newsletter-email');
+    const statusEl = document.getElementById('newsletter-status');
+    const btn = document.getElementById('newsletter-submit');
+
+    function setStatus(text) {
+      if (statusEl) statusEl.textContent = text || '';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      setStatus('');
+
+      const email = (input?.value || '').trim();
+      if (!email) {
+        setStatus('please enter an email.');
+        return;
+      }
+
+      if (btn) btn.disabled = true;
+
+      try {
+        const payload = {
+          email,
+          source: 'headbutt-site',
+          page: window.location.pathname,
+          ua: navigator.userAgent
+        };
+
+        const res = await fetch(WEB_APP_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json().catch(() => null);
+
+        if (data && data.ok) {
+          setStatus('thanks. you’re on the list.');
+          if (input) input.value = '';
+        } else {
+          setStatus('something went wrong. try again.');
+          console.error('newsletter error:', data);
+        }
+      } catch (err) {
+        setStatus('something went wrong. try again.');
+        console.error(err);
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  })();
+</script>
+ 
+</body></html>
