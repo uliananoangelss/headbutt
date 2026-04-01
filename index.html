@@ -355,6 +355,8 @@ const router = (viewName) => {
                 default:
                     renderHome(app);
             }
+
+            requestAnimationFrame(() => initAutoplayVideos(app));
         };
 
         
@@ -363,8 +365,8 @@ const router = (viewName) => {
             container.innerHTML = `
                 <!-- Section 1: Hero -->
                 <section class="relative h-screen w-full overflow-hidden">
-                    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-                        <source src="VIDEO_HEADER.MP4" type="video/mp4">
+                    <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <source src="VIDEO_HEADER.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 z-[5]"></div>
                     <div class="absolute inset-0 z-10 flex items-center justify-center">
@@ -1148,7 +1150,7 @@ const router = (viewName) => {
 
                         <div class="w-full flex justify-center mb-8 md:mb-10">
                             <div class="w-full md:w-[88%] lg:w-[84%] aspect-video bg-black overflow-hidden">
-                                <video autoplay muted loop playsinline class="w-full h-full object-contain bg-black">
+                                <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="w-full h-full object-contain bg-black">
                                     <source src="VIDEO_HEADER.mp4" type="video/mp4">
                                 </video>
                             </div>
@@ -1504,8 +1506,38 @@ const openModal = (imgSrc, title, year) => {
         const handleEsc = (e) => {
             if (e.key === 'Escape') closeModal();
         };
+
+        const initAutoplayVideos = (scope = document) => {
+            const videos = scope.querySelectorAll('video[autoplay]');
+
+            videos.forEach(video => {
+                video.muted = true;
+                video.defaultMuted = true;
+                video.autoplay = true;
+                video.setAttribute('muted', '');
+                video.setAttribute('playsinline', '');
+                video.setAttribute('webkit-playsinline', '');
+                video.preload = 'auto';
+
+                const tryPlay = () => {
+                    const playPromise = video.play();
+                    if (playPromise && typeof playPromise.catch === 'function') {
+                        playPromise.catch(() => {});
+                    }
+                };
+
+                if (video.readyState >= 2) {
+                    tryPlay();
+                } else {
+                    video.addEventListener('loadedmetadata', tryPlay, { once: true });
+                    video.addEventListener('canplay', tryPlay, { once: true });
+                }
+            });
+        };
+
 document.addEventListener('DOMContentLoaded', () => {
             router('home');
+            requestAnimationFrame(() => initAutoplayVideos(document));
         });
 
 
