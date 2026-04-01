@@ -365,7 +365,7 @@ const router = (viewName) => {
             container.innerHTML = `
                 <!-- Section 1: Hero -->
                 <section class="relative h-screen w-full overflow-hidden">
-                    <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0">
+                    <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="js-autoplay-video absolute inset-0 w-full h-full object-cover z-0" onloadedmetadata="this.muted=true;this.defaultMuted=true;this.play().catch(()=>{this.controls=true;});">
                         <source src="VIDEO_HEADER.MP4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 z-[5]"></div>
@@ -1150,8 +1150,8 @@ const router = (viewName) => {
 
                         <div class="w-full flex justify-center mb-8 md:mb-10">
                             <div class="w-full md:w-[88%] lg:w-[84%] aspect-video bg-black overflow-hidden">
-                                <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="w-full h-full object-contain bg-black">
-                                    <source src="VIDEO_HEADER.mp4" type="video/mp4">
+                                <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="js-autoplay-video w-full h-full object-contain bg-black" onloadedmetadata="this.muted=true;this.defaultMuted=true;this.play().catch(()=>{this.controls=true;});">
+                                    <source src="VIDEO_HEADER.MP4" type="video/mp4">
                                 </video>
                             </div>
                         </div>
@@ -1508,30 +1508,52 @@ const openModal = (imgSrc, title, year) => {
         };
 
         const initAutoplayVideos = (scope = document) => {
-            const videos = scope.querySelectorAll('video[autoplay]');
+            const videos = scope.querySelectorAll('video[autoplay], video.js-autoplay-video');
 
             videos.forEach(video => {
                 video.muted = true;
                 video.defaultMuted = true;
                 video.autoplay = true;
+                video.loop = true;
+                video.playsInline = true;
                 video.setAttribute('muted', '');
+                video.setAttribute('autoplay', '');
+                video.setAttribute('loop', '');
                 video.setAttribute('playsinline', '');
                 video.setAttribute('webkit-playsinline', '');
+                video.setAttribute('preload', 'auto');
                 video.preload = 'auto';
 
                 const tryPlay = () => {
                     const playPromise = video.play();
                     if (playPromise && typeof playPromise.catch === 'function') {
-                        playPromise.catch(() => {});
+                        playPromise.catch(() => {
+                            video.controls = true;
+                        });
                     }
                 };
 
                 if (video.readyState >= 2) {
                     tryPlay();
                 } else {
+                    video.load();
                     video.addEventListener('loadedmetadata', tryPlay, { once: true });
                     video.addEventListener('canplay', tryPlay, { once: true });
+                    video.addEventListener('canplaythrough', tryPlay, { once: true });
                 }
+
+                document.addEventListener('visibilitychange', () => {
+                    if (!document.hidden) tryPlay();
+                });
+
+                const unlockOnce = () => {
+                    tryPlay();
+                    window.removeEventListener('touchstart', unlockOnce);
+                    window.removeEventListener('click', unlockOnce);
+                };
+
+                window.addEventListener('touchstart', unlockOnce, { once: true, passive: true });
+                window.addEventListener('click', unlockOnce, { once: true });
             });
         };
 
